@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  gap: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* 首页标题 */
+.home-title {
+  color: white;
+  margin-bottom: 40px;
+  font-size: 2.5rem;
+  text-align: center;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* 按钮容器 */
+.button-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* 通用按钮样式 */
+.nav-button {
+  font-size: 1.2rem;
+  padding: 12px 32px;
+  border-radius: 8px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Dashboard 按钮 */
+.nav-button.dashboard {
+  background: #2563eb;
+}
+
+.nav-button.dashboard:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Profile 按钮 */
+.nav-button.profile {
+  background: #10b981;
+}
+
+.nav-button.profile:hover {
+  background: #059669;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* 首页描述文字 */
+.home-description {
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 20px;
+  text-align: center;
+  max-width: 500px;
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .home-title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+  
+  .button-container {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 0 20px;
+  }
+  
+  .nav-button {
+    width: 100%;
+    max-width: 300px;
+    font-size: 1.1rem;
+    padding: 14px 24px;
+  }
+  
+  .home-description {
+    font-size: 1rem;
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-container {
+    padding: 20px;
+  }
+  
+  .home-title {
+    font-size: 1.8rem;
+  }
+  
+  .nav-button {
+    padding: 16px 20px;
+  }
+}
