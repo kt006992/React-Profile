@@ -16,9 +16,9 @@ const useDashboardData = () => {
         
         // 并行请求所有数据
         const [revenuesRes, eventsRes, salesRes] = await Promise.all([
-          fetch('http://localhost:5000/api/revenues'),
-          fetch('http://localhost:5000/api/events'),
-          fetch('http://localhost:5000/api/sales')
+          fetch('/api/revenues'),
+          fetch('/api/events'),
+          fetch('/api/sales')
         ]);
 
         const [revenues, events, sales] = await Promise.all([
