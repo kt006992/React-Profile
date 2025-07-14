@@ -2,6 +2,7 @@ export default async function handler(req, res) {
   const SUPABASE_URL = process.env.DATABASE_URL;
   const SUPABASE_KEY = process.env.DATABASE_KEY;
 
+  console.log('🔍 健康检查...');
 
   const response = await fetch(`${SUPABASE_URL}/rest/v1/`, {
     headers: {

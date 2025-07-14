@@ -12,22 +12,6 @@ const Profile = () => {
     setShowResumeModal(false);
   };
 
-  const handleConnect = () => {
-    const email = 'klaytime31@gmail.com'; // 替换为你的邮箱
-    const subject = 'Connection Request from Your Portfolio';
-    const body = `<example>Hi Runtian,
-
-I visited your portfolio website and would like to connect with you.
-
-Best regards,
-[Your Name]`;
-
-    // 直接跳转到Gmail compose页面
-    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    
-    window.open(gmailUrl, '_blank');
-  };
-
   return (
     <div className="profile-page">
       {/* 导航栏 */}
@@ -42,7 +26,7 @@ Best regards,
             <a href="#testimonials" className="nav-link">Testimonials</a>
             <a href="#blog" className="nav-link">Blog</a> */}
             <a href="#services" className="nav-link">Continuely Updating ... </a>
-            <button className="connect-btn" onClick={handleConnect}>Connect</button>
+            <button className="connect-btn">Connect</button>
           </nav>
         </div>
       </header>

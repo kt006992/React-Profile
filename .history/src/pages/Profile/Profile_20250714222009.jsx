@@ -15,7 +15,7 @@ const Profile = () => {
   const handleConnect = () => {
     const email = 'klaytime31@gmail.com'; // 替换为你的邮箱
     const subject = 'Connection Request from Your Portfolio';
-    const body = `<example>Hi Runtian,
+    const body = `Hi Runtian,
 
 I visited your portfolio website and would like to connect with you.
 

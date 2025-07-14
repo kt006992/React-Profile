@@ -11,7 +11,7 @@ function App() {
         <Route path="/" element={
           <div className="home-container">
             <h1 className="home-title">
-              Welcome to My App
+              欢迎来到我的应用
             </h1>
             
             <div className="button-container">
@@ -19,19 +19,19 @@ function App() {
                 className="nav-button dashboard"
                 onClick={() => { window.location.href = '/home'; }}
               >
-                📊 Go to Dashboard
+                📊 跳转到Dashboard
               </button>
               
               <button 
                 className="nav-button profile"
                 onClick={() => { window.location.href = '/profile'; }}
               >
-                👋 Go to Profile
+                👋 跳转到Profile页面
               </button>
             </div>
             
             <p className="home-description">
-              This is a demo app with Dashboard and Profile pages. Click the buttons above to explore different features.
+              这是一个包含Dashboard和Profile页面的演示应用，点击上方按钮来探索不同的页面功能。
             </p>
           </div>
         } />

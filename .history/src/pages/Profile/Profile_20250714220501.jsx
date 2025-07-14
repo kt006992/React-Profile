@@ -12,22 +12,6 @@ const Profile = () => {
     setShowResumeModal(false);
   };
 
-  const handleConnect = () => {
-    const email = 'klaytime31@gmail.com'; // 替换为你的邮箱
-    const subject = 'Connection Request from Your Portfolio';
-    const body = `<example>Hi Runtian,
-
-I visited your portfolio website and would like to connect with you.
-
-Best regards,
-[Your Name]`;
-
-    // 直接跳转到Gmail compose页面
-    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    
-    window.open(gmailUrl, '_blank');
-  };
-
   return (
     <div className="profile-page">
       {/* 导航栏 */}
@@ -37,12 +21,11 @@ Best regards,
             👋
           </div>
           <nav className="nav-menu">
-            {/* <a href="#services" className="nav-link">Services</a>
+            <a href="#services" className="nav-link">Services</a>
             <a href="#portfolio" className="nav-link">Portfolio</a>
             <a href="#testimonials" className="nav-link">Testimonials</a>
-            <a href="#blog" className="nav-link">Blog</a> */}
-            <a href="#services" className="nav-link">Continuely Updating ... </a>
-            <button className="connect-btn" onClick={handleConnect}>Connect</button>
+            <a href="#blog" className="nav-link">Blog</a>
+            <button className="connect-btn">Connect</button>
           </nav>
         </div>
       </header>
@@ -68,11 +51,11 @@ Best regards,
             </h1>
             
             <p className="description">
-              I have many hand-on skills and keep the enthusiasm for learning.
+              I help you increase conversion and performance in every possible way.
             </p>
             
             <div className="cta-buttons">
-              <button className="btn-primary" onClick={handleShowResume}>See my resume</button>
+              <button className="btn-primary" onClick={handleShowResume}>See my work</button>
               <button className="btn-secondary" onClick={() => window.open('https://www.linkedin.com/in/runtian-liang-mpe-sde', '_blank')}>Go to Linkedin</button>
             </div>
           </div>
