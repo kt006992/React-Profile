@@ -1,0 +1,254 @@
+/* Notes页面样式 */
+.notes-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 2rem 6rem 2rem; /* 增加更多底部空间 */
+  animation: fadeIn 0.6s ease-out;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.notes-content {
+  width: 100%;
+}
+
+.notes-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.notes-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #1e293b;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.notes-icon {
+  font-size: 3rem;
+}
+
+.notes-subtitle {
+  font-size: 1.2rem;
+  color: #64748b;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.note-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.note-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+  border-color: #3b82f6;
+}
+
+.note-date {
+  font-size: 0.85rem;
+  color: #64748b;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.note-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.note-preview {
+  color: #64748b;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.note-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.tag {
+  background: linear-gradient(135deg, #3b82f6, #06b6d4);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.notes-footer {
+  text-align: center;
+  padding: 3rem 0 2rem 0; /* 增加顶部padding */
+  color: #64748b;
+  font-size: 1.1rem;
+  font-style: italic;
+  margin-top: 2rem; /* 确保与上面内容有间距 */
+}
+
+/* Cover Letter特殊样式 */
+.cover-letter-card {
+  max-width: 800px;
+  margin: 0 auto 2rem auto;
+  padding: 2rem;
+}
+
+.cover-letter-content {
+  text-align: left;
+  line-height: 1.7;
+}
+
+.greeting {
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #1e293b;
+  font-size: 1rem;
+}
+
+.paragraph {
+  margin-bottom: 1.5rem;
+  color: #374151;
+  font-size: 0.95rem;
+  text-align: justify;
+}
+
+.bullet-points {
+  margin: 1.5rem 0;
+  padding-left: 1.5rem;
+  color: #374151;
+  font-size: 0.95rem;
+}
+
+.bullet-points li {
+  margin-bottom: 1rem;
+  text-align: justify;
+  line-height: 1.6;
+}
+
+.personal-note {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.personal-note-title {
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+}
+
+.personal-note-content {
+  color: #374151;
+  font-size: 0.95rem;
+  text-align: justify;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* 淡入动画 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .notes-title {
+    font-size: 2.5rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .notes-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .notes-container {
+    padding: 1rem 1rem 3rem 1rem; /* 调整移动端padding */
+  }
+
+  .cover-letter-card {
+    padding: 1.5rem;
+  }
+
+  .bullet-points {
+    padding-left: 1rem;
+  }
+
+  .paragraph,
+  .personal-note-content,
+  .bullet-points li {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .notes-title {
+    font-size: 2rem;
+  }
+  
+  .notes-icon {
+    font-size: 2rem;
+  }
+  
+  .notes-subtitle {
+    font-size: 1rem;
+  }
+  
+  .note-card {
+    padding: 1.25rem;
+  }
+  
+  .notes-container {
+    padding: 1rem 0.5rem 2rem 0.5rem; /* 小屏幕进一步减少padding */
+  }
+
+  .cover-letter-card {
+    padding: 1.25rem;
+  }
+
+  .paragraph,
+  .personal-note-content,
+  .bullet-points li {
+    font-size: 0.85rem;
+  }
+
+  .greeting,
+  .personal-note-title {
+    font-size: 0.9rem;
+  }
+}

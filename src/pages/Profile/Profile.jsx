@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import Notes from '../Notes/Notes'; // 引入Notes组件
 import './Profile.css';
 
 const Profile = () => {
   const [showResumeModal, setShowResumeModal] = useState(false);
+  const [currentPage, setCurrentPage] = useState('home');
 
   const handleShowResume = () => {
     setShowResumeModal(true);
@@ -13,7 +15,7 @@ const Profile = () => {
   };
 
   const handleConnect = () => {
-    const email = 'klaytime31@gmail.com'; // 替换为你的邮箱
+    const email = 'klaytime31@gmail.com';
     const subject = 'Connection Request from Your Portfolio';
     const body = `<example>Hi Runtian,
 
@@ -22,25 +24,86 @@ I visited your portfolio website and would like to connect with you.
 Best regards,
 [Your Name]`;
 
-    // 直接跳转到Gmail compose页面
     const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     
     window.open(gmailUrl, '_blank');
   };
+
+  // 渲染主页内容
+  const renderHomeContent = () => (
+    <div className="content-container">
+      {/* 左侧内容 */}
+      <div className="content-left">
+        <div className="location">
+          <span className="location-icon">📍</span>
+          <span className="location-text">Perth, Western Australia</span>
+        </div>
+        
+        <h1 className="main-title">
+          Hello, I am a
+          <br />
+          <span className="highlight">Graduated Software Engineer (From Bachelor to Master)</span>
+          <br />
+          That Looking for
+          <br />
+          <span className="highlight">Work Opportunity</span>
+        </h1>
+        
+        <p className="description">
+          I have many hand-on skills and keep the enthusiasm for learning.
+        </p>
+        
+        <div className="cta-buttons">
+          <button className="btn-primary" onClick={handleShowResume}>See my resume</button>
+          <button className="btn-secondary" onClick={() => window.open('https://www.linkedin.com/in/runtian-liang-mpe-sde', '_blank')}>Go to Linkedin</button>
+          <button className="btn-github" onClick={() => window.open('https://github.com/kt006992', '_blank')}>My GitHub</button>
+        </div>
+      </div>
+
+      {/* 右侧内容 */}
+      <div className="content-right">
+        <div className="profile-image-container">
+          <div className="decorative-dots"></div>
+          <div className="profile-image">
+            <img 
+              src="/images/Selfie.jpg" 
+              alt="Profile" 
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 
   return (
     <div className="profile-page">
       {/* 导航栏 */}
       <header className="profile-header">
         <div className="nav-container">
-          <div className="logo">
+          <div className="logo" onClick={() => setCurrentPage('home')}>
             👋
           </div>
           <nav className="nav-menu">
-            {/* <a href="#services" className="nav-link">Services</a>
-            <a href="#portfolio" className="nav-link">Portfolio</a>
-            <a href="#testimonials" className="nav-link">Testimonials</a>
-            <a href="#blog" className="nav-link">Blog</a> */}
+            <a 
+              href="#home" 
+              className={`nav-link ${currentPage === 'home' ? 'active' : ''}`}
+              onClick={(e) => {
+                e.preventDefault();
+                setCurrentPage('home');
+              }}
+            >
+              Home
+            </a>
+            <a 
+              href="#notes" 
+              className={`nav-link ${currentPage === 'notes' ? 'active' : ''}`}
+              onClick={(e) => {
+                e.preventDefault();
+                setCurrentPage('notes');
+              }}
+            >
+              Notes
+            </a>
             <a href="#services" className="nav-link">Continuely Updating ... </a>
             <button className="connect-btn" onClick={handleConnect}>Connect</button>
           </nav>
@@ -48,48 +111,8 @@ Best regards,
       </header>
 
       {/* 主要内容区域 */}
-      <main className="profile-main">
-        <div className="content-container">
-          {/* 左侧内容 */}
-          <div className="content-left">
-            <div className="location">
-              <span className="location-icon">📍</span>
-              <span className="location-text">Perth, Western Australia</span>
-            </div>
-            
-            <h1 className="main-title">
-              I am a
-              <br />
-              <span className="highlight">Fresh Postgraduated SDE</span>
-              <br />
-              That Looking for
-              <br />
-              <span className="highlight">Work Opportunity</span>
-            </h1>
-            
-            <p className="description">
-              I have many hand-on skills and keep the enthusiasm for learning.
-            </p>
-            
-            <div className="cta-buttons">
-              <button className="btn-primary" onClick={handleShowResume}>See my resume</button>
-              <button className="btn-secondary" onClick={() => window.open('https://www.linkedin.com/in/runtian-liang-mpe-sde', '_blank')}>Go to Linkedin</button>
-            </div>
-          </div>
-
-          {/* 右侧内容 */}
-          <div className="content-right">
-            <div className="profile-image-container">
-              <div className="decorative-dots"></div>
-              <div className="profile-image">
-                <img 
-                  src="/images/Selfie.jpg" 
-                  alt="Profile" 
-                />
-              </div>
-            </div>
-          </div>
-        </div>
+      <main className={`profile-main ${currentPage === 'home' ? 'home-layout' : ''}`}>
+        {currentPage === 'home' ? renderHomeContent() : <Notes />}
       </main>
 
       {/* PDF简历浮窗 */}
