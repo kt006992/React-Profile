@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Notes from '../Notes/Notes'; // 引入Notes组件
+import Projects from '../Projects/Projects'; // 引入Projects组件
 import './Profile.css';
 
 const Profile = () => {
@@ -75,6 +76,20 @@ Best regards,
     </div>
   );
 
+  // 根据当前页面渲染相应内容
+  const renderCurrentPage = () => {
+    switch(currentPage) {
+      case 'home':
+        return renderHomeContent();
+      case 'projects':
+        return <Projects />;
+      case 'notes':
+        return <Notes />;
+      default:
+        return renderHomeContent();
+    }
+  };
+
   return (
     <div className="profile-page">
       {/* 导航栏 */}
@@ -95,6 +110,16 @@ Best regards,
               Home
             </a>
             <a 
+              href="#projects" 
+              className={`nav-link ${currentPage === 'projects' ? 'active' : ''}`}
+              onClick={(e) => {
+                e.preventDefault();
+                setCurrentPage('projects');
+              }}
+            >
+              Projects
+            </a>
+            <a 
               href="#notes" 
               className={`nav-link ${currentPage === 'notes' ? 'active' : ''}`}
               onClick={(e) => {
@@ -112,7 +137,7 @@ Best regards,
 
       {/* 主要内容区域 */}
       <main className={`profile-main ${currentPage === 'home' ? 'home-layout' : ''}`}>
-        {currentPage === 'home' ? renderHomeContent() : <Notes />}
+        {renderCurrentPage()}
       </main>
 
       {/* PDF简历浮窗 */}
