@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { projectsData } from './projectsData';
+import { projectsData } from './ProjectsData.js';
 import './Projects.css';
 import '../Notes/Notes.css'; // 引入 Notes.css 以共享样式
 
