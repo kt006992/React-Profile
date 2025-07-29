@@ -128,19 +128,44 @@ html, body {
 }
 
 .content-container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 2rem;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
+  grid-template-columns: 1.2fr 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 3rem 2rem;
+  align-items: start;
+  grid-template-areas: 
+    "left right-top"
+    "left right-bottom";
 }
 
 /* Left Content */
 .content-left {
+  grid-area: left;
   animation: slideInLeft 0.8s ease-out;
 }
+
+/* Right Top Content - 头像 */
+.content-right {
+  grid-area: right-top;
+  animation: slideInRight 1s ease-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: center;
+  margin-top: 2rem;
+}
+
+/* Right Bottom Content - 新的独立区域 */
+.content-bottom-right {
+  grid-area: right-bottom;
+  animation: fadeInUp 1s ease-out 0.3s both;
+  width: 100%;
+  justify-self: center;
+}
+
 
 .location {
   display: flex;
@@ -187,10 +212,10 @@ html, body {
 }
 
 .btn-primary {
-  background: #1e293b;
-  color: white;
+  background: white;
+  color: #1e293b;
   padding: 1rem 2rem;
-  border: none;
+  border: 2px solid #1e293b;
   border-radius: 8px;
   font-weight: 600;
   font-size: 1rem;
@@ -200,7 +225,8 @@ html, body {
 }
 
 .btn-primary:hover {
-  background: #0f172a;
+  background: #1e293b;
+  color: white;
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
@@ -266,11 +292,6 @@ html, body {
   transform: translateY(-1px) scale(1.02);
 }
 
-/* Right Content */
-.content-right {
-  animation: slideInRight 1s ease-out;
-}
-
 .profile-image-container {
   position: relative;
   display: flex;
@@ -280,26 +301,26 @@ html, body {
 
 .decorative-dots {
   position: absolute;
-  top: -20px;
-  left: -20px;
-  width: 100px;
-  height: 100px;
-  background-image: radial-gradient(circle, #3b82f6 2px, transparent 2px);
-  background-size: 15px 15px;
+  top: -15px;
+  left: -15px;
+  width: 60px;
+  height: 60px;
+  background-image: radial-gradient(circle, #3b82f6 1.5px, transparent 1.5px);
+  background-size: 12px 12px;
   opacity: 0.3;
   z-index: 1;
 }
 
 .profile-image {
-  width: 400px;
-  height: 400px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   overflow: hidden;
   background: linear-gradient(135deg, #e0f2fe, #bae6fd);
-  padding: 20px;
+  padding: 12px;
   position: relative;
   z-index: 2;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
 }
 
@@ -318,6 +339,40 @@ html, body {
 .profile-image:hover img {
   transform: scale(1.1);
 }
+
+.content-section {
+  margin-bottom: 1.5rem;
+  padding: 1.2rem;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.content-section:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.section-text {
+  color: #64748b;
+  line-height: 1.5;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
 
 /* Animations */
 @keyframes slideInLeft {
@@ -339,6 +394,17 @@ html, body {
   to {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -455,6 +521,30 @@ html, body {
 }
 
 /* 响应式设计 */
+@media (max-width: 968px) {
+  .content-container {
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+      "left"
+      "right-top"
+      "right-bottom";
+    gap: 3rem;
+  }
+  
+  .profile-main.home-layout {
+    align-items: flex-start;
+  }
+  
+  .content-left {
+    text-align: center;
+  }
+  
+  .main-title {
+    font-size: 2.5rem;
+  }
+  
+}
+
 @media (max-width: 768px) {
   .resume-modal {
     width: 95%;
@@ -495,6 +585,10 @@ html, body {
   .nav-link {
     font-size: 0.9rem;
   }
+  
+  .main-title {
+    font-size: 2rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -517,5 +611,9 @@ html, body {
   .btn-github {
     width: 100%;
     max-width: 280px;
+  }
+  
+  .main-title {
+    font-size: 1.8rem;
   }
 }

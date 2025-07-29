@@ -41,9 +41,9 @@ Best regards,
         </div>
         
         <h1 className="main-title">
-          Hello, I am a
+          Hello, I am Runtian(Tim),
           <br />
-          <span className="highlight">Graduated Software Engineer (From Bachelor to Master)</span>
+          <span className="highlight">a Graduated Software Engineer (From Bachelor to Master)</span>
           <br />
           That Looking for
           <br />
@@ -73,6 +73,37 @@ Best regards,
           </div>
         </div>
       </div>
+      
+
+    {/* 右下方独立内容区域 */}
+      <div className="content-bottom-right">
+        <div className="content-section">
+          <div className="section-title">🎯 About Me</div>
+          <p className="section-text">
+            Passionate software engineer with experience in full-stack development, 
+            data analysis & visualization, and system design. Always eager to learn new technologies 
+            and solve challenging problems.
+          </p>
+          <div className="section-title">🛠️ Skills</div>
+          <p className="section-text">
+            Programming Language: JavaScript, TypeScript, Python, C++, C#, R, MATLAB, SQL, Shell, Bash.
+          </p>
+          <p className="section-text">
+            Frameworks/Libraries: React, Node.js, Next.js, Vue, Flask, Vite, React Native, .Net, Spring Boot.
+          </p>
+          <p className="section-text">
+            DevOps/Tools: Vercel, Docker, AWS, GitHub Actions, ngrok, Azure, Google Cloud, Figma.
+          </p>
+          <p className="section-text">
+             Databases: Supabase, Prisma, MongoDB, Firebase, PostgreSQL, MySQL.
+          </p>
+          <p className="section-text">
+            Others: RESTful API, JWT Auth, JUnit, Agile, Microsoft, Jira.
+          </p>
+        </div>
+
+      </div>
+
     </div>
   );
 

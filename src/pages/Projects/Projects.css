@@ -26,7 +26,7 @@
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* 增加最小宽度 */
+  grid-template-columns: repeat(auto-fit, minmax(800px, 1fr)); /* 增加最小宽度 */
   gap: 2.5rem;
   margin-top: 2rem;
 }
