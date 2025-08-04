@@ -1,0 +1,201 @@
+/* Navigation.css - 导航栏专用样式 */
+
+/* 基础导航栏样式 - 保持与原Profile.css一致 */
+.navigation-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  padding: 1rem 0;
+}
+
+/* 导航栏容器 - 与原样式一致 */
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo区域 - 保持原有样式 */
+.nav-logo {
+  font-size: 2rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  user-select: none;
+}
+
+.nav-logo:hover {
+  transform: scale(1.1);
+}
+
+.logo-icon {
+  font-size: 2rem;
+}
+
+/* 导航菜单 - 保持原布局 */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* 桌面端菜单 */
+.desktop-menu {
+  display: flex;
+}
+
+/* 导航链接 - 完全保持原样式 */
+.nav-link {
+  text-decoration: none;
+  color: #64748b;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.2s ease;
+  position: relative;
+}
+
+.nav-link:hover {
+  color: #1e293b;
+}
+
+/* 导航链接下划线效果 - 保持原效果 */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background: linear-gradient(90deg, #3b82f6, #06b6d4);
+  transition: width 0.2s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* 激活状态的导航链接 - 保持原样 */
+.nav-link.active {
+  color: #3b82f6 !important;
+  font-weight: 600;
+}
+
+.nav-link.active::after {
+  width: 100% !important;
+  background: linear-gradient(90deg, #3b82f6, #06b6d4);
+}
+
+/* Connect按钮 - 保持原有样式 */
+.nav-cta-button {
+  background: #1e293b;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+}
+
+.nav-cta-button:hover {
+  background: #0f172a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* 移动端菜单切换按钮 - 简化版本 */
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: #1e293b;
+}
+
+.mobile-menu-toggle:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* 移动端菜单 - 简化实现 */
+.mobile-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-menu.open {
+  display: block;
+}
+
+.mobile-menu-content {
+  padding: 1rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mobile-menu .nav-link {
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  font-size: 1.1rem;
+}
+
+.mobile-menu .nav-cta-button {
+  margin-top: 1rem;
+  justify-content: center;
+  width: 100%;
+}
+
+/* 响应式设计 - 与原样式一致 */
+@media (max-width: 768px) {
+  .nav-menu {
+    gap: 1rem;
+  }
+  
+  .nav-link {
+    font-size: 0.9rem;
+  }
+
+  .nav-container {
+    padding: 0 1.5rem;
+  }
+
+  .desktop-menu {
+    display: none;
+  }
+
+  .mobile-menu-toggle {
+    display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-container {
+    padding: 0 1rem;
+  }
+
+  .logo-icon {
+    font-size: 1.8rem;
+  }
+
+  .mobile-menu-content {
+    padding: 1rem 1rem 1.5rem;
+  }
+}

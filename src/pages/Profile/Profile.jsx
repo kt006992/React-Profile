@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import Notes from '../Notes/Notes'; // 引入Notes组件
-import Projects from '../Projects/Projects'; // 引入Projects组件
+import Notes from '../Notes/Notes'; 
+import Projects from '../Projects/Projects'; 
+import Navigation from '../../components/Navigation/Navigation'; 
+import profileData from './ProfileData'; 
 import './Profile.css';
 
 const Profile = () => {
@@ -16,18 +18,17 @@ const Profile = () => {
   };
 
   const handleConnect = () => {
-    const email = 'klaytime31@gmail.com';
-    const subject = 'Connection Request from Your Portfolio';
-    const body = `<example>Hi Runtian,
-
-I visited your portfolio website and would like to connect with you.
-
-Best regards,
-[Your Name]`;
+    const email = profileData.personal.email;
+    const subject = profileData.email.subject;
+    const body = profileData.email.bodyTemplate;
 
     const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     
     window.open(gmailUrl, '_blank');
+  };
+
+  const handlePageChange = (pageKey) => {
+    setCurrentPage(pageKey);
   };
 
   // 渲染主页内容
@@ -36,28 +37,40 @@ Best regards,
       {/* 左侧内容 */}
       <div className="content-left">
         <div className="location">
-          <span className="location-icon">📍</span>
-          <span className="location-text">Perth, Western Australia</span>
+          <span className="location-icon">{profileData.icons.location}</span>
+          <span className="location-text">{profileData.personal.location}</span>
         </div>
         
         <h1 className="main-title">
-          Hello, I am Runtian(Tim),
+          {profileData.hero.greeting}
           <br />
-          <span className="highlight">a Graduated Software Engineer (From Bachelor to Master)</span>
+          <span className="highlight">{profileData.hero.title}</span>
           <br />
-          That Looking for
+          {profileData.hero.subtitle}
           <br />
-          <span className="highlight">Work Opportunity</span>
+          <span className="highlight">{profileData.hero.highlight}</span>
         </h1>
         
         <p className="description">
-          I have many hand-on skills and keep the enthusiasm for learning.
+          {profileData.hero.description}
         </p>
         
         <div className="cta-buttons">
-          <button className="btn-primary" onClick={handleShowResume}>See my resume</button>
-          <button className="btn-secondary" onClick={() => window.open('https://www.linkedin.com/in/runtian-liang-mpe-sde', '_blank')}>Go to Linkedin</button>
-          <button className="btn-github" onClick={() => window.open('https://github.com/kt006992', '_blank')}>My GitHub</button>
+          <button className="btn-primary" onClick={handleShowResume}>
+            {profileData.buttons.seeResume}
+          </button>
+          <button 
+            className="btn-secondary" 
+            onClick={() => window.open(profileData.personal.linkedin, '_blank')}
+          >
+            {profileData.buttons.goToLinkedin}
+          </button>
+          <button 
+            className="btn-github" 
+            onClick={() => window.open(profileData.personal.github, '_blank')}
+          >
+            {profileData.buttons.myGithub}
+          </button>
         </div>
       </div>
 
@@ -67,43 +80,34 @@ Best regards,
           <div className="decorative-dots"></div>
           <div className="profile-image">
             <img 
-              src="/images/Selfie.jpg" 
+              src={profileData.personal.profileImage} 
               alt="Profile" 
             />
           </div>
         </div>
       </div>
       
-
-    {/* 右下方独立内容区域 */}
+      {/* 右下方独立内容区域 */}
       <div className="content-bottom-right">
         <div className="content-section">
-          <div className="section-title">🎯 About Me</div>
+          <div className="section-title">
+            {profileData.about.icon} {profileData.about.title}
+          </div>
           <p className="section-text">
-            Passionate software engineer with experience in full-stack development, 
-            data analysis & visualization, and system design. Always eager to learn new technologies 
-            and solve challenging problems.
+            {profileData.about.content}
           </p>
-          <div className="section-title">🛠️ Skills</div>
-          <p className="section-text">
-            Programming Language: JavaScript, TypeScript, Python, C++, C#, R, MATLAB, SQL, Shell, Bash.
-          </p>
-          <p className="section-text">
-            Frameworks/Libraries: React, Node.js, Next.js, Vue, Flask, Vite, React Native, .Net, Spring Boot.
-          </p>
-          <p className="section-text">
-            DevOps/Tools: Vercel, Docker, AWS, GitHub Actions, ngrok, Azure, Google Cloud, Figma.
-          </p>
-          <p className="section-text">
-             Databases: Supabase, Prisma, MongoDB, Firebase, PostgreSQL, MySQL.
-          </p>
-          <p className="section-text">
-            Others: RESTful API, JWT Auth, JUnit, Agile, Microsoft, Jira.
-          </p>
+          
+          <div className="section-title">
+            {profileData.skills.icon} {profileData.skills.title}
+          </div>
+          
+          {Object.entries(profileData.skills.categories).map(([key, category]) => (
+            <p key={key} className="section-text">
+              {category.label}: {category.items}
+            </p>
+          ))}
         </div>
-
       </div>
-
     </div>
   );
 
@@ -123,48 +127,13 @@ Best regards,
 
   return (
     <div className="profile-page">
-      {/* 导航栏 */}
-      <header className="profile-header">
-        <div className="nav-container">
-          <div className="logo" onClick={() => setCurrentPage('home')}>
-            👋
-          </div>
-          <nav className="nav-menu">
-            <a 
-              href="#home" 
-              className={`nav-link ${currentPage === 'home' ? 'active' : ''}`}
-              onClick={(e) => {
-                e.preventDefault();
-                setCurrentPage('home');
-              }}
-            >
-              Home
-            </a>
-            <a 
-              href="#projects" 
-              className={`nav-link ${currentPage === 'projects' ? 'active' : ''}`}
-              onClick={(e) => {
-                e.preventDefault();
-                setCurrentPage('projects');
-              }}
-            >
-              Projects
-            </a>
-            <a 
-              href="#notes" 
-              className={`nav-link ${currentPage === 'notes' ? 'active' : ''}`}
-              onClick={(e) => {
-                e.preventDefault();
-                setCurrentPage('notes');
-              }}
-            >
-              Notes
-            </a>
-            <a href="#services" className="nav-link">Continuely Updating ... </a>
-            <button className="connect-btn" onClick={handleConnect}>Connect</button>
-          </nav>
-        </div>
-      </header>
+      {/* 使用独立的导航组件 */}
+      <Navigation 
+        currentPage={currentPage}
+        onPageChange={handlePageChange}
+        onConnect={handleConnect}
+        className="profile-navigation"
+      />
 
       {/* 主要内容区域 */}
       <main className={`profile-main ${currentPage === 'home' ? 'home-layout' : ''}`}>
@@ -176,14 +145,14 @@ Best regards,
         <div className="resume-modal-overlay" onClick={handleCloseModal}>
           <div className="resume-modal" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
-              <h2>My Resume</h2>
+              <h2>{profileData.modal.resumeTitle}</h2>
               <button className="close-btn" onClick={handleCloseModal}>
-                ✕
+                {profileData.modal.closeButton}
               </button>
             </div>
             <div className="modal-content">
               <iframe
-                src="/resume/RTL_Resume.pdf"
+                src={profileData.personal.resume}
                 width="100%"
                 height="600px"
                 title="Resume"
@@ -195,12 +164,12 @@ Best regards,
                 className="download-btn"
                 onClick={() => {
                   const link = document.createElement('a');
-                  link.href = '/resume/resume.pdf';
-                  link.download = 'Runtian_Liang_Resume.pdf';
+                  link.href = profileData.personal.resume;
+                  link.download = profileData.modal.downloadFilename;
                   link.click();
                 }}
               >
-                📥 Download Resume
+                {profileData.buttons.downloadResume}
               </button>
             </div>
           </div>

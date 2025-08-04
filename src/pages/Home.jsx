@@ -34,7 +34,7 @@ const Home = () => {
         <Header />
         
         <div className="dashboard">
-          {/* 统计卡片 */}
+          {/* Statistics Card */}
           <div className="stats-grid">
             <StatCard title="Ticket Revenue Over Time" value="$4500">
               <LineChart data={data.revenues} />
@@ -49,7 +49,7 @@ const Home = () => {
             </StatCard>
           </div>
 
-          {/* 最近销售表格 */}
+          {/* Recent Sales Table */}
           <RecentSalesTable sales={data.sales} />
         </div>
       </div>

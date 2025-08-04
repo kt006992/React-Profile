@@ -10,9 +10,6 @@ const Notes = () => {
             <span className="notes-icon">📝</span>
             My Notes & Thoughts
           </h1>
-          {/* <p className="notes-subtitle">
-            A collection of my technical insights, and random thoughts
-          </p> */}
         </div>
 
         <div className="notes-grid">
